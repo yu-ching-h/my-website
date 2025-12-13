@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超廢網頁</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 首頁 -->
+    <div id="home-page" class="page">
+        <div class="content">
+            <p id="welcome-text" class="message">你剛剛其實不用打開我。</p>
+        </div>
+        <div class="button-container">
+            <button id="waste-btn" class="button button-primary">你剛剛浪費了十秒鐘看這句話</button>
+            <button id="exit-btn" class="button button-secondary">退出</button>
+            <button id="settings-btn" class="button button-settings">設定</button>
+        </div>
+    </div>
+
+    <!-- 等待頁面（浪費按鈕按下後） -->
+    <div id="waiting-page" class="page hidden">
+        <div class="content">
+            <div class="potato-spinner">
+                <div class="potato">🥔</div>
+            </div>
+        </div>
+        <div class="hints">
+            <p id="hint-1" class="hint">你可以現在關掉</p>
+            <p id="hint-2" class="hint hidden">真的可以</p>
+            <p id="hint-3" class="hint hidden">我不會生氣</p>
+        </div>
+    </div>
+
+    <!-- 浪費結果頁面 -->
+    <div id="result-page" class="page hidden">
+        <div class="content">
+            <p id="result-text" class="message">沒有任何事發生。</p>
+        </div>
+        <div class="button-container">
+            <button id="back-to-home-btn" class="button button-primary">回首頁</button>
+        </div>
+    </div>
+
+    <!-- 假退出頁面 -->
+    <div id="fake-exit-page" class="page hidden">
+        <div class="content">
+            <p id="fake-exit-text" class="message">剛剛那次其實也不算退出。</p>
+        </div>
+        <div class="button-container">
+            <button id="retry-exit-btn" class="button button-primary">再試一次</button>
+        </div>
+    </div>
+
+    <!-- 設定頁面 -->
+    <div id="settings-page" class="page hidden">
+        <div class="content">
+            <h2>設定</h2>
+            <div class="settings-option">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="waste-mode-toggle" checked disabled>
+                    <span>啟用浪費模式</span>
+                </label>
+            </div>
+        </div>
+        <div class="button-container">
+            <button id="close-settings-btn" class="button button-primary">關閉</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

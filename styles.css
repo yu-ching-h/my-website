@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.page.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.content {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.message {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+h2 {
+    font-size: 28px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.button-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.button-primary {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.button-primary:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.button-primary:active {
+    transform: translateY(0);
+}
+
+.button-secondary {
+    background-color: #f44336;
+    color: white;
+}
+
+.button-secondary:hover {
+    background-color: #da190b;
+}
+
+.button-settings {
+    background-color: #2196F3;
+    color: white;
+}
+
+.button-settings:hover {
+    background-color: #0b7dda;
+}
+
+/* 馬鈴薯動畫 */
+.potato-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+}
+
+.potato {
+    font-size: 100px;
+    animation: rotatePotato 3s linear infinite;
+}
+
+@keyframes rotatePotato {
+    from {
+        transform: rotateZ(0deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateZ(360deg) rotateY(360deg);
+    }
+}
+
+.hints {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.hint {
+    margin: 5px 0;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.hint.hidden {
+    display: none;
+}
+
+/* 設定頁面 */
+.settings-option {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.checkbox-container input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+}
+
+.setting-note {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* 黑屏效果 */
+body.black-screen::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    animation: blackScreenFlash 0.3s ease;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+@keyframes blackScreenFlash {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* 按鈕跳動效果 */
+.button.jumping {
+    position: fixed;
+    transition: all 0.3s ease;
+}
+
+.exit-btn-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.exit-btn-touch-count {
+    position: absolute;
+    top: -25px;
+    right: -10px;
+    background-color: #ff9800;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* 響應式設計 */
+@media (max-width: 600px) {
+    .message {
+        font-size: 24px;
+    }
+
+    .button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .potato {
+        font-size: 80px;
+    }
+}
