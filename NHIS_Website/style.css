@@ -1,0 +1,170 @@
+/* style.css - 核心樣式 */
+
+:root {
+    /* 定義變數：方便統一修改顏色 */
+    --bg-color: #020a16;      /* 極深藍背景 */
+    --nav-bg: rgba(2, 10, 22, 0.9); /* 導覽列半透明背景 */
+    --text-main: #e0f7fa;     /* 主要文字（極淺藍/白） */
+    --neon-blue: #00f3ff;     /* 核心霓虹藍 (Cyan) */
+    --neon-glow: 0 0 10px #00f3ff, 0 0 20px #00f3ff; /* 發光特效 */
+    --border-color: #1a3c5e;  /* 邊框顏色 */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace; /* 使用等寬字體增加科技感 */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    /* 背景網格線特效 */
+    background-image: 
+        linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+/* --- 導覽列 --- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    background: var(--nav-bg);
+    border-bottom: 2px solid var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue);
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 1rem;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* 滑鼠移過去的特效 */
+.nav-links a:hover {
+    color: var(--neon-blue);
+    text-shadow: 0 0 8px var(--neon-blue);
+}
+
+/* --- 主要內容區 --- */
+.container {
+    padding: 120px 10% 60px; /* 避開導覽列的高度 */
+    min-height: 100vh;
+}
+
+/* 首頁封面大標題 */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: -80px; /* 修正 padding 造成的偏移 */
+}
+
+.hero h1 {
+    font-size: 4rem;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--neon-blue); /* 鏤空文字效果 */
+    text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 40px;
+    border-right: 3px solid var(--neon-blue); /* 打字機游標效果 */
+    padding-right: 10px;
+    animation: blink 1s infinite;
+}
+
+/* 按鈕樣式 */
+.btn {
+    padding: 12px 30px;
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+}
+
+.btn:hover {
+    background: var(--neon-blue);
+    color: var(--bg-color); /* 反白效果 */
+    box-shadow: 0 0 20px var(--neon-blue);
+}
+
+/* 內頁標題樣式 */
+.page-title {
+    border-left: 5px solid var(--neon-blue);
+    padding-left: 20px;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: var(--neon-blue);
+}
+
+/* 簡單的卡片樣式 (用於課程、夥伴) */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+/* 動畫定義 */
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* RWD 手機版微調 */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* 手機版暫時隱藏選單，未來可用 JS 做漢堡選單 */
+    .hero h1 { font-size: 2.5rem; }
+}
